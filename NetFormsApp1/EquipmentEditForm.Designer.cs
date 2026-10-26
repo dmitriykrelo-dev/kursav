@@ -126,26 +126,29 @@ namespace NetFormsApp1
             //
             // btnSave
             //
+            btnSave.BackColor = Color.FromArgb(128, 255, 128);
             btnSave.Location = new Point(165, 279);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 23);
             btnSave.TabIndex = 9;
             btnSave.Text = "Сохранить";
-            btnSave.UseVisualStyleBackColor = true;
+            btnSave.UseVisualStyleBackColor = false;
             //
             // btnCancel
             //
+            btnCancel.BackColor = Color.FromArgb(255, 128, 128);
             btnCancel.Location = new Point(165, 308);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 23);
             btnCancel.TabIndex = 10;
             btnCancel.Text = "Отмена";
-            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.UseVisualStyleBackColor = false;
             //
             // EquipmentEditForm
             //
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(255, 224, 192);
             ClientSize = new Size(394, 354);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);

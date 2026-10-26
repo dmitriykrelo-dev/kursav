@@ -40,92 +40,119 @@ namespace NetFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblSearch
+            // dataGridView1
             // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(20, 20);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Text = "Поиск:";
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.GridColor = System.Drawing.Color.Silver;
+            this.dataGridView1.Location = new System.Drawing.Point(20, 95);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(1130, 425);
+            this.dataGridView1.TabIndex = 10;
+            // 
+            // btnAddEquipment
+            // 
+            this.btnAddEquipment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnAddEquipment.Location = new System.Drawing.Point(350, 15);
+            this.btnAddEquipment.Name = "btnAddEquipment";
+            this.btnAddEquipment.Size = new System.Drawing.Size(110, 30);
+            this.btnAddEquipment.TabIndex = 5;
+            this.btnAddEquipment.Text = "Добавить";
+            this.btnAddEquipment.UseVisualStyleBackColor = false;
+            // 
+            // btnEditEquipment
+            // 
+            this.btnEditEquipment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnEditEquipment.Location = new System.Drawing.Point(470, 15);
+            this.btnEditEquipment.Name = "btnEditEquipment";
+            this.btnEditEquipment.Size = new System.Drawing.Size(110, 30);
+            this.btnEditEquipment.TabIndex = 4;
+            this.btnEditEquipment.Text = "Изменить";
+            this.btnEditEquipment.UseVisualStyleBackColor = false;
+            // 
+            // btnMoveEquipment
+            // 
+            this.btnMoveEquipment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnMoveEquipment.Location = new System.Drawing.Point(590, 15);
+            this.btnMoveEquipment.Name = "btnMoveEquipment";
+            this.btnMoveEquipment.Size = new System.Drawing.Size(120, 30);
+            this.btnMoveEquipment.TabIndex = 3;
+            this.btnMoveEquipment.Text = "Переместить";
+            this.btnMoveEquipment.UseVisualStyleBackColor = false;
+            // 
+            // btnMaintenance
+            // 
+            this.btnMaintenance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnMaintenance.Location = new System.Drawing.Point(720, 15);
+            this.btnMaintenance.Name = "btnMaintenance";
+            this.btnMaintenance.Size = new System.Drawing.Size(130, 30);
+            this.btnMaintenance.TabIndex = 2;
+            this.btnMaintenance.Text = "Обслуживание";
+            this.btnMaintenance.UseVisualStyleBackColor = false;
+            // 
+            // btnReferences
+            // 
+            this.btnReferences.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnReferences.Location = new System.Drawing.Point(860, 15);
+            this.btnReferences.Name = "btnReferences";
+            this.btnReferences.Size = new System.Drawing.Size(130, 30);
+            this.btnReferences.TabIndex = 1;
+            this.btnReferences.Text = "Справочники";
+            this.btnReferences.UseVisualStyleBackColor = false;
+            // 
+            // btnDeleteEquipment
+            // 
+            this.btnDeleteEquipment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnDeleteEquipment.Location = new System.Drawing.Point(350, 50);
+            this.btnDeleteEquipment.Name = "btnDeleteEquipment";
+            this.btnDeleteEquipment.Size = new System.Drawing.Size(110, 30);
+            this.btnDeleteEquipment.TabIndex = 6;
+            this.btnDeleteEquipment.Text = "Удалить";
+            this.btnDeleteEquipment.UseVisualStyleBackColor = false;
+            // 
+            // btnReports
+            // 
+            this.btnReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnReports.Location = new System.Drawing.Point(470, 50);
+            this.btnReports.Name = "btnReports";
+            this.btnReports.Size = new System.Drawing.Size(110, 30);
+            this.btnReports.TabIndex = 7;
+            this.btnReports.Text = "Отчёты";
+            this.btnReports.UseVisualStyleBackColor = false;
+            // 
+            // btnBackup
+            // 
+            this.btnBackup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnBackup.Location = new System.Drawing.Point(1000, 15);
+            this.btnBackup.Name = "btnBackup";
+            this.btnBackup.Size = new System.Drawing.Size(150, 30);
+            this.btnBackup.TabIndex = 0;
+            this.btnBackup.Text = "Резервная копия";
+            this.btnBackup.UseVisualStyleBackColor = false;
             // 
             // txtSearch
             // 
             this.txtSearch.Location = new System.Drawing.Point(80, 17);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(250, 24);
+            this.txtSearch.Size = new System.Drawing.Size(250, 23);
+            this.txtSearch.TabIndex = 8;
             // 
-            // btnAddEquipment
+            // lblSearch
             // 
-            this.btnAddEquipment.Location = new System.Drawing.Point(350, 15);
-            this.btnAddEquipment.Name = "btnAddEquipment";
-            this.btnAddEquipment.Size = new System.Drawing.Size(110, 30);
-            this.btnAddEquipment.Text = "Добавить";
-            // 
-            // btnEditEquipment
-            // 
-            this.btnEditEquipment.Location = new System.Drawing.Point(470, 15);
-            this.btnEditEquipment.Name = "btnEditEquipment";
-            this.btnEditEquipment.Size = new System.Drawing.Size(110, 30);
-            this.btnEditEquipment.Text = "Изменить";
-            // 
-            // btnMoveEquipment
-            // 
-            this.btnMoveEquipment.Location = new System.Drawing.Point(590, 15);
-            this.btnMoveEquipment.Name = "btnMoveEquipment";
-            this.btnMoveEquipment.Size = new System.Drawing.Size(120, 30);
-            this.btnMoveEquipment.Text = "Переместить";
-            // 
-            // btnMaintenance
-            // 
-            this.btnMaintenance.Location = new System.Drawing.Point(720, 15);
-            this.btnMaintenance.Name = "btnMaintenance";
-            this.btnMaintenance.Size = new System.Drawing.Size(130, 30);
-            this.btnMaintenance.Text = "Обслуживание";
-            // 
-            // btnReferences
-            // 
-            this.btnReferences.Location = new System.Drawing.Point(860, 15);
-            this.btnReferences.Name = "btnReferences";
-            this.btnReferences.Size = new System.Drawing.Size(130, 30);
-            this.btnReferences.Text = "Справочники";
-            // 
-            // btnDeleteEquipment
-            // 
-            this.btnDeleteEquipment.Location = new System.Drawing.Point(350, 50);
-            this.btnDeleteEquipment.Name = "btnDeleteEquipment";
-            this.btnDeleteEquipment.Size = new System.Drawing.Size(110, 30);
-            this.btnDeleteEquipment.Text = "Удалить";
-            this.btnDeleteEquipment.UseVisualStyleBackColor = true;
-            // 
-            // btnReports
-            // 
-            this.btnReports.Location = new System.Drawing.Point(470, 50);
-            this.btnReports.Name = "btnReports";
-            this.btnReports.Size = new System.Drawing.Size(110, 30);
-            this.btnReports.Text = "Отчёты";
-            this.btnReports.UseVisualStyleBackColor = true;
-            // 
-            // btnBackup
-            // 
-            this.btnBackup.Location = new System.Drawing.Point(1000, 15);
-            this.btnBackup.Name = "btnBackup";
-            this.btnBackup.Size = new System.Drawing.Size(150, 30);
-            this.btnBackup.Text = "Резервная копия";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(20, 95);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1130, 425);
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Location = new System.Drawing.Point(20, 20);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(42, 16);
+            this.lblSearch.TabIndex = 9;
+            this.lblSearch.Text = "Поиск:";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(1170, 540);
             this.Controls.Add(this.btnBackup);
             this.Controls.Add(this.btnReferences);

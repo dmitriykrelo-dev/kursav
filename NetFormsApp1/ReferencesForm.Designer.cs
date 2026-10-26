@@ -83,13 +83,14 @@ namespace NetFormsApp1
             this.btnDeleteEmployee = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabCategories.SuspendLayout();
-            this.tabLocations.SuspendLayout();
-            this.tabStatuses.SuspendLayout();
-            this.tabEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategories)).BeginInit();
+            this.tabLocations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocations)).BeginInit();
+            this.tabStatuses.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStatuses)).BeginInit();
+            this.tabEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).BeginInit();
+            this.SuspendLayout();
             // 
             // tabControl1
             // 
@@ -101,6 +102,7 @@ namespace NetFormsApp1
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(536, 406);
+            this.tabControl1.TabIndex = 0;
             // 
             // tabCategories
             // 
@@ -111,49 +113,71 @@ namespace NetFormsApp1
             this.tabCategories.Controls.Add(this.txtCategoryName);
             this.tabCategories.Controls.Add(this.lblCategoryName);
             this.tabCategories.Controls.Add(this.dgvCategories);
-            this.tabCategories.Location = new System.Drawing.Point(4, 25);
+            this.tabCategories.Location = new System.Drawing.Point(4, 24);
             this.tabCategories.Name = "tabCategories";
+            this.tabCategories.Size = new System.Drawing.Size(528, 378);
+            this.tabCategories.TabIndex = 0;
             this.tabCategories.Text = "Категории";
             // 
             // dgvCategories
             // 
+            this.dgvCategories.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.dgvCategories.Location = new System.Drawing.Point(10, 10);
             this.dgvCategories.Name = "dgvCategories";
             this.dgvCategories.Size = new System.Drawing.Size(500, 220);
+            this.dgvCategories.TabIndex = 6;
             // 
             // lblCategoryName
             // 
             this.lblCategoryName.AutoSize = true;
             this.lblCategoryName.Location = new System.Drawing.Point(10, 243);
+            this.lblCategoryName.Name = "lblCategoryName";
+            this.lblCategoryName.Size = new System.Drawing.Size(96, 16);
+            this.lblCategoryName.TabIndex = 5;
             this.lblCategoryName.Text = "Наименование*:";
             // 
             // txtCategoryName
             // 
             this.txtCategoryName.Location = new System.Drawing.Point(120, 240);
-            this.txtCategoryName.Size = new System.Drawing.Size(390, 24);
+            this.txtCategoryName.Name = "txtCategoryName";
+            this.txtCategoryName.Size = new System.Drawing.Size(390, 23);
+            this.txtCategoryName.TabIndex = 4;
             // 
             // lblCategoryDesc
             // 
             this.lblCategoryDesc.AutoSize = true;
             this.lblCategoryDesc.Location = new System.Drawing.Point(10, 273);
+            this.lblCategoryDesc.Name = "lblCategoryDesc";
+            this.lblCategoryDesc.Size = new System.Drawing.Size(63, 16);
+            this.lblCategoryDesc.TabIndex = 3;
             this.lblCategoryDesc.Text = "Описание:";
             // 
             // txtCategoryDesc
             // 
             this.txtCategoryDesc.Location = new System.Drawing.Point(120, 270);
-            this.txtCategoryDesc.Size = new System.Drawing.Size(390, 24);
+            this.txtCategoryDesc.Name = "txtCategoryDesc";
+            this.txtCategoryDesc.Size = new System.Drawing.Size(390, 23);
+            this.txtCategoryDesc.TabIndex = 2;
             // 
             // btnAddCategory
             // 
+            this.btnAddCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnAddCategory.Location = new System.Drawing.Point(120, 305);
+            this.btnAddCategory.Name = "btnAddCategory";
             this.btnAddCategory.Size = new System.Drawing.Size(180, 32);
+            this.btnAddCategory.TabIndex = 1;
             this.btnAddCategory.Text = "Добавить";
+            this.btnAddCategory.UseVisualStyleBackColor = false;
             // 
             // btnDeleteCategory
             // 
+            this.btnDeleteCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnDeleteCategory.Location = new System.Drawing.Point(310, 305);
+            this.btnDeleteCategory.Name = "btnDeleteCategory";
             this.btnDeleteCategory.Size = new System.Drawing.Size(180, 32);
+            this.btnDeleteCategory.TabIndex = 0;
             this.btnDeleteCategory.Text = "Удалить";
+            this.btnDeleteCategory.UseVisualStyleBackColor = false;
             // 
             // tabLocations
             // 
@@ -164,48 +188,66 @@ namespace NetFormsApp1
             this.tabLocations.Controls.Add(this.txtLocationName);
             this.tabLocations.Controls.Add(this.lblLocationName);
             this.tabLocations.Controls.Add(this.dgvLocations);
-            this.tabLocations.Location = new System.Drawing.Point(4, 25);
+            this.tabLocations.Location = new System.Drawing.Point(4, 24);
             this.tabLocations.Name = "tabLocations";
+            this.tabLocations.Size = new System.Drawing.Size(528, 378);
+            this.tabLocations.TabIndex = 1;
             this.tabLocations.Text = "Места размещения";
             // 
             // dgvLocations
             // 
+            this.dgvLocations.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.dgvLocations.Location = new System.Drawing.Point(10, 10);
             this.dgvLocations.Name = "dgvLocations";
             this.dgvLocations.Size = new System.Drawing.Size(500, 220);
+            this.dgvLocations.TabIndex = 6;
             // 
             // lblLocationName
             // 
             this.lblLocationName.AutoSize = true;
             this.lblLocationName.Location = new System.Drawing.Point(10, 243);
+            this.lblLocationName.Name = "lblLocationName";
+            this.lblLocationName.Size = new System.Drawing.Size(96, 16);
+            this.lblLocationName.TabIndex = 5;
             this.lblLocationName.Text = "Наименование*:";
             // 
             // txtLocationName
             // 
             this.txtLocationName.Location = new System.Drawing.Point(120, 240);
-            this.txtLocationName.Size = new System.Drawing.Size(390, 24);
+            this.txtLocationName.Name = "txtLocationName";
+            this.txtLocationName.Size = new System.Drawing.Size(390, 23);
+            this.txtLocationName.TabIndex = 4;
             // 
             // lblLocationDesc
             // 
             this.lblLocationDesc.AutoSize = true;
             this.lblLocationDesc.Location = new System.Drawing.Point(10, 273);
+            this.lblLocationDesc.Name = "lblLocationDesc";
+            this.lblLocationDesc.Size = new System.Drawing.Size(63, 16);
+            this.lblLocationDesc.TabIndex = 3;
             this.lblLocationDesc.Text = "Описание:";
             // 
             // txtLocationDesc
             // 
             this.txtLocationDesc.Location = new System.Drawing.Point(120, 270);
-            this.txtLocationDesc.Size = new System.Drawing.Size(390, 24);
+            this.txtLocationDesc.Name = "txtLocationDesc";
+            this.txtLocationDesc.Size = new System.Drawing.Size(390, 23);
+            this.txtLocationDesc.TabIndex = 2;
             // 
             // btnAddLocation
             // 
             this.btnAddLocation.Location = new System.Drawing.Point(120, 305);
+            this.btnAddLocation.Name = "btnAddLocation";
             this.btnAddLocation.Size = new System.Drawing.Size(180, 32);
+            this.btnAddLocation.TabIndex = 1;
             this.btnAddLocation.Text = "Добавить";
             // 
             // btnDeleteLocation
             // 
             this.btnDeleteLocation.Location = new System.Drawing.Point(310, 305);
+            this.btnDeleteLocation.Name = "btnDeleteLocation";
             this.btnDeleteLocation.Size = new System.Drawing.Size(180, 32);
+            this.btnDeleteLocation.TabIndex = 0;
             this.btnDeleteLocation.Text = "Удалить";
             // 
             // tabStatuses
@@ -215,37 +257,50 @@ namespace NetFormsApp1
             this.tabStatuses.Controls.Add(this.txtStatusName);
             this.tabStatuses.Controls.Add(this.lblStatusName);
             this.tabStatuses.Controls.Add(this.dgvStatuses);
-            this.tabStatuses.Location = new System.Drawing.Point(4, 25);
+            this.tabStatuses.Location = new System.Drawing.Point(4, 24);
             this.tabStatuses.Name = "tabStatuses";
+            this.tabStatuses.Size = new System.Drawing.Size(528, 378);
+            this.tabStatuses.TabIndex = 2;
             this.tabStatuses.Text = "Статусы";
             // 
             // dgvStatuses
             // 
+            this.dgvStatuses.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.dgvStatuses.Location = new System.Drawing.Point(10, 10);
             this.dgvStatuses.Name = "dgvStatuses";
             this.dgvStatuses.Size = new System.Drawing.Size(500, 220);
+            this.dgvStatuses.TabIndex = 4;
             // 
             // lblStatusName
             // 
             this.lblStatusName.AutoSize = true;
             this.lblStatusName.Location = new System.Drawing.Point(10, 243);
+            this.lblStatusName.Name = "lblStatusName";
+            this.lblStatusName.Size = new System.Drawing.Size(96, 16);
+            this.lblStatusName.TabIndex = 3;
             this.lblStatusName.Text = "Наименование*:";
             // 
             // txtStatusName
             // 
             this.txtStatusName.Location = new System.Drawing.Point(120, 240);
-            this.txtStatusName.Size = new System.Drawing.Size(390, 24);
+            this.txtStatusName.Name = "txtStatusName";
+            this.txtStatusName.Size = new System.Drawing.Size(390, 23);
+            this.txtStatusName.TabIndex = 2;
             // 
             // btnAddStatus
             // 
             this.btnAddStatus.Location = new System.Drawing.Point(120, 275);
+            this.btnAddStatus.Name = "btnAddStatus";
             this.btnAddStatus.Size = new System.Drawing.Size(180, 32);
+            this.btnAddStatus.TabIndex = 1;
             this.btnAddStatus.Text = "Добавить";
             // 
             // btnDeleteStatus
             // 
             this.btnDeleteStatus.Location = new System.Drawing.Point(310, 275);
+            this.btnDeleteStatus.Name = "btnDeleteStatus";
             this.btnDeleteStatus.Size = new System.Drawing.Size(180, 32);
+            this.btnDeleteStatus.TabIndex = 0;
             this.btnDeleteStatus.Text = "Удалить";
             // 
             // tabEmployees
@@ -259,65 +314,89 @@ namespace NetFormsApp1
             this.tabEmployees.Controls.Add(this.txtEmployeeName);
             this.tabEmployees.Controls.Add(this.lblEmployeeName);
             this.tabEmployees.Controls.Add(this.dgvEmployees);
-            this.tabEmployees.Location = new System.Drawing.Point(4, 25);
+            this.tabEmployees.Location = new System.Drawing.Point(4, 24);
             this.tabEmployees.Name = "tabEmployees";
+            this.tabEmployees.Size = new System.Drawing.Size(528, 378);
+            this.tabEmployees.TabIndex = 3;
             this.tabEmployees.Text = "Сотрудники";
             // 
             // dgvEmployees
             // 
+            this.dgvEmployees.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.dgvEmployees.Location = new System.Drawing.Point(10, 10);
             this.dgvEmployees.Name = "dgvEmployees";
             this.dgvEmployees.Size = new System.Drawing.Size(500, 220);
+            this.dgvEmployees.TabIndex = 8;
             // 
             // lblEmployeeName
             // 
             this.lblEmployeeName.AutoSize = true;
             this.lblEmployeeName.Location = new System.Drawing.Point(10, 243);
+            this.lblEmployeeName.Name = "lblEmployeeName";
+            this.lblEmployeeName.Size = new System.Drawing.Size(40, 16);
+            this.lblEmployeeName.TabIndex = 7;
             this.lblEmployeeName.Text = "ФИО*:";
             // 
             // txtEmployeeName
             // 
             this.txtEmployeeName.Location = new System.Drawing.Point(120, 240);
-            this.txtEmployeeName.Size = new System.Drawing.Size(390, 24);
+            this.txtEmployeeName.Name = "txtEmployeeName";
+            this.txtEmployeeName.Size = new System.Drawing.Size(390, 23);
+            this.txtEmployeeName.TabIndex = 6;
             // 
             // lblEmployeePosition
             // 
             this.lblEmployeePosition.AutoSize = true;
             this.lblEmployeePosition.Location = new System.Drawing.Point(10, 273);
+            this.lblEmployeePosition.Name = "lblEmployeePosition";
+            this.lblEmployeePosition.Size = new System.Drawing.Size(69, 16);
+            this.lblEmployeePosition.TabIndex = 5;
             this.lblEmployeePosition.Text = "Должность:";
             // 
             // txtEmployeePosition
             // 
             this.txtEmployeePosition.Location = new System.Drawing.Point(120, 270);
-            this.txtEmployeePosition.Size = new System.Drawing.Size(180, 24);
+            this.txtEmployeePosition.Name = "txtEmployeePosition";
+            this.txtEmployeePosition.Size = new System.Drawing.Size(180, 23);
+            this.txtEmployeePosition.TabIndex = 4;
             // 
             // lblEmployeePhone
             // 
             this.lblEmployeePhone.AutoSize = true;
             this.lblEmployeePhone.Location = new System.Drawing.Point(310, 273);
+            this.lblEmployeePhone.Name = "lblEmployeePhone";
+            this.lblEmployeePhone.Size = new System.Drawing.Size(55, 16);
+            this.lblEmployeePhone.TabIndex = 3;
             this.lblEmployeePhone.Text = "Телефон:";
             // 
             // txtEmployeePhone
             // 
             this.txtEmployeePhone.Location = new System.Drawing.Point(380, 270);
-            this.txtEmployeePhone.Size = new System.Drawing.Size(130, 24);
+            this.txtEmployeePhone.Name = "txtEmployeePhone";
+            this.txtEmployeePhone.Size = new System.Drawing.Size(130, 23);
+            this.txtEmployeePhone.TabIndex = 2;
             // 
             // btnAddEmployee
             // 
             this.btnAddEmployee.Location = new System.Drawing.Point(120, 305);
+            this.btnAddEmployee.Name = "btnAddEmployee";
             this.btnAddEmployee.Size = new System.Drawing.Size(180, 32);
+            this.btnAddEmployee.TabIndex = 1;
             this.btnAddEmployee.Text = "Добавить";
             // 
             // btnDeleteEmployee
             // 
             this.btnDeleteEmployee.Location = new System.Drawing.Point(310, 305);
+            this.btnDeleteEmployee.Name = "btnDeleteEmployee";
             this.btnDeleteEmployee.Size = new System.Drawing.Size(180, 32);
+            this.btnDeleteEmployee.TabIndex = 0;
             this.btnDeleteEmployee.Text = "Удалить";
             // 
             // ReferencesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(560, 430);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -330,15 +409,15 @@ namespace NetFormsApp1
             this.tabControl1.ResumeLayout(false);
             this.tabCategories.ResumeLayout(false);
             this.tabCategories.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategories)).EndInit();
             this.tabLocations.ResumeLayout(false);
             this.tabLocations.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLocations)).EndInit();
             this.tabStatuses.ResumeLayout(false);
             this.tabStatuses.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStatuses)).EndInit();
             this.tabEmployees.ResumeLayout(false);
             this.tabEmployees.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCategories)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLocations)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStatuses)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).EndInit();
             this.ResumeLayout(false);
         }

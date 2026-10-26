@@ -58,6 +58,9 @@ namespace NetFormsApp1
             this.lblEquipmentTitle.AutoSize = true;
             this.lblEquipmentTitle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblEquipmentTitle.Location = new System.Drawing.Point(20, 20);
+            this.lblEquipmentTitle.Name = "lblEquipmentTitle";
+            this.lblEquipmentTitle.Size = new System.Drawing.Size(96, 16);
+            this.lblEquipmentTitle.TabIndex = 17;
             this.lblEquipmentTitle.Text = "Оборудование:";
             // 
             // lblEquipmentValue
@@ -65,71 +68,106 @@ namespace NetFormsApp1
             this.lblEquipmentValue.AutoSize = true;
             this.lblEquipmentValue.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblEquipmentValue.Location = new System.Drawing.Point(150, 20);
+            this.lblEquipmentValue.Name = "lblEquipmentValue";
+            this.lblEquipmentValue.Size = new System.Drawing.Size(0, 16);
+            this.lblEquipmentValue.TabIndex = 16;
             // 
             // lblEmployee
             // 
             this.lblEmployee.AutoSize = true;
             this.lblEmployee.Location = new System.Drawing.Point(20, 50);
+            this.lblEmployee.Name = "lblEmployee";
+            this.lblEmployee.Size = new System.Drawing.Size(97, 16);
+            this.lblEmployee.TabIndex = 15;
             this.lblEmployee.Text = "Ответственный*:";
             // 
             // cmbEmployee
             // 
             this.cmbEmployee.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEmployee.Location = new System.Drawing.Point(150, 47);
-            this.cmbEmployee.Size = new System.Drawing.Size(300, 24);
+            this.cmbEmployee.Name = "cmbEmployee";
+            this.cmbEmployee.Size = new System.Drawing.Size(300, 23);
+            this.cmbEmployee.TabIndex = 14;
             // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Location = new System.Drawing.Point(20, 80);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(69, 16);
+            this.lblDate.TabIndex = 13;
             this.lblDate.Text = "Дата работ:";
             // 
             // dtpDate
             // 
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDate.Location = new System.Drawing.Point(150, 77);
-            this.dtpDate.Size = new System.Drawing.Size(300, 24);
+            this.dtpDate.Name = "dtpDate";
+            this.dtpDate.Size = new System.Drawing.Size(300, 23);
+            this.dtpDate.TabIndex = 12;
             // 
             // lblType
             // 
             this.lblType.AutoSize = true;
             this.lblType.Location = new System.Drawing.Point(20, 110);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(69, 16);
+            this.lblType.TabIndex = 11;
             this.lblType.Text = "Тип работ*:";
             // 
             // cmbType
             // 
             this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbType.Items.AddRange(new object[] { "Профилактика", "Ремонт", "Диагностика", "Модернизация" });
+            this.cmbType.Items.AddRange(new object[] {
+            "Профилактика",
+            "Ремонт",
+            "Диагностика",
+            "Модернизация"});
             this.cmbType.Location = new System.Drawing.Point(150, 107);
-            this.cmbType.Size = new System.Drawing.Size(300, 24);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(300, 23);
+            this.cmbType.TabIndex = 10;
             // 
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.Location = new System.Drawing.Point(20, 140);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(114, 16);
+            this.lblStatus.TabIndex = 9;
             this.lblStatus.Text = "Статус после работ:";
             // 
             // cmbStatus
             // 
             this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStatus.Location = new System.Drawing.Point(150, 137);
-            this.cmbStatus.Size = new System.Drawing.Size(300, 24);
+            this.cmbStatus.Name = "cmbStatus";
+            this.cmbStatus.Size = new System.Drawing.Size(300, 23);
+            this.cmbStatus.TabIndex = 8;
             // 
             // lblCost
             // 
             this.lblCost.AutoSize = true;
             this.lblCost.Location = new System.Drawing.Point(20, 170);
+            this.lblCost.Name = "lblCost";
+            this.lblCost.Size = new System.Drawing.Size(95, 16);
+            this.lblCost.TabIndex = 7;
             this.lblCost.Text = "Стоимость, руб.:";
             // 
             // txtCost
             // 
             this.txtCost.Location = new System.Drawing.Point(150, 167);
-            this.txtCost.Size = new System.Drawing.Size(300, 24);
+            this.txtCost.Name = "txtCost";
+            this.txtCost.Size = new System.Drawing.Size(300, 23);
+            this.txtCost.TabIndex = 6;
             // 
             // chkNextDate
             // 
             this.chkNextDate.AutoSize = true;
             this.chkNextDate.Location = new System.Drawing.Point(150, 200);
+            this.chkNextDate.Name = "chkNextDate";
+            this.chkNextDate.Size = new System.Drawing.Size(264, 20);
+            this.chkNextDate.TabIndex = 5;
             this.chkNextDate.Text = "Назначить дату следующего обслуживания";
             // 
             // dtpNextDate
@@ -137,38 +175,52 @@ namespace NetFormsApp1
             this.dtpNextDate.Enabled = false;
             this.dtpNextDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpNextDate.Location = new System.Drawing.Point(150, 228);
-            this.dtpNextDate.Size = new System.Drawing.Size(300, 24);
+            this.dtpNextDate.Name = "dtpNextDate";
+            this.dtpNextDate.Size = new System.Drawing.Size(300, 23);
+            this.dtpNextDate.TabIndex = 4;
             // 
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
             this.lblDescription.Location = new System.Drawing.Point(20, 262);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(63, 16);
+            this.lblDescription.TabIndex = 3;
             this.lblDescription.Text = "Описание:";
             // 
             // txtDescription
             // 
             this.txtDescription.Location = new System.Drawing.Point(150, 259);
             this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(300, 70);
+            this.txtDescription.TabIndex = 2;
             // 
             // btnSave
             // 
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnSave.Location = new System.Drawing.Point(150, 340);
+            this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(140, 36);
+            this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Сохранить";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             // 
             // btnCancel
             // 
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnCancel.Location = new System.Drawing.Point(300, 340);
+            this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(140, 36);
+            this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "Отмена";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             // 
             // MaintenanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(480, 395);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
