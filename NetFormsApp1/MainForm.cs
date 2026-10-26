@@ -31,6 +31,13 @@ namespace NetFormsApp1
             btnEditEquipment.Click += btnEditEquipment_Click;
             btnMoveEquipment.Click += btnMoveEquipment_Click;
             btnMaintenance.Click += btnMaintenance_Click;
+            btnReferences.Click += btnReferences_Click;
+            btnBackup.Click += btnBackup_Click;
+            bool isAdmin = _currentUser != null && _currentUser.Role == "admin";
+            btnAddEquipment.Visible = isAdmin;
+            btnEditEquipment.Visible = isAdmin;
+            btnReferences.Visible = isAdmin;
+            btnBackup.Visible = isAdmin;
 
             if (_currentUser != null)
             {
@@ -159,11 +166,37 @@ namespace NetFormsApp1
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-        
+
             using (var form = new MaintenanceForm(selected))
             {
                 if (form.ShowDialog(this) == DialogResult.OK)
                     LoadEquipmentData();
+            }
+        }
+        private void btnReferences_Click(object? sender, EventArgs e)
+        {
+            using (var form = new ReferencesForm())
+            {
+                form.ShowDialog(this);
+            }
+            LoadEquipmentData();
+        }
+        
+        private void btnBackup_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                string backupDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "backups");
+                Directory.CreateDirectory(backupDir);
+                string dest = Path.Combine(backupDir, $"equipment_backup_{DateTime.Now:yyyyMMdd_HHmmss}.db");
+                File.Copy(DatabaseHelper.DbPath, dest, true);
+                MessageBox.Show($"Резервная копия создана:\n{dest}", "Резервное копирование",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Не удалось создать резервную копию: {ex.Message}", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

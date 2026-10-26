@@ -102,5 +102,17 @@ namespace NetFormsApp1.Data
             cmd.Parameters.AddWithValue("@notes", string.IsNullOrEmpty(eq.Notes) ? (object)DBNull.Value : eq.Notes);
             return cmd;
         }
+        public void Delete(int equipmentId)
+        {
+            using var connection = new SqliteConnection(DatabaseHelper.ConnectionString);
+            connection.Open();
+            // Включаем проверку внешних ключей для этой операции
+            using var pragma = new SqliteCommand("PRAGMA foreign_keys = ON;", connection);
+            pragma.ExecuteNonQuery();
+
+            using var cmd = new SqliteCommand("DELETE FROM equipment WHERE equipment_id = @id;", connection);
+            cmd.Parameters.AddWithValue("@id", equipmentId);
+            cmd.ExecuteNonQuery();
+        }
     }
 }
