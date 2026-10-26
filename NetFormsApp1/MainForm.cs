@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using NetFormsApp1.Data;
 using NetFormsApp1.Models;
@@ -13,6 +14,7 @@ namespace NetFormsApp1
         public MainForm()
         {
             InitializeComponent();
+
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.MultiSelect = false;
 
@@ -20,9 +22,24 @@ namespace NetFormsApp1
             _repository = new EquipmentRepository();
             LoadEquipmentData();
         }
-        private Equipment GetSelectedEquipment()
+
+        private void LoadEquipmentData()
         {
-            DataGridViewRow row = null;
+            try
+            {
+                _equipmentList = _repository.GetAll();
+                dataGridView1.DataSource = _equipmentList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка загрузки данных: {ex.Message}", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private Equipment? GetSelectedEquipment()
+        {
+             DataGridViewRow? row = null;
 
             if (dataGridView1.SelectedRows.Count > 0)
                 row = dataGridView1.SelectedRows[0];
@@ -42,31 +59,24 @@ namespace NetFormsApp1
                 return _equipmentList.Find(x => x.EquipmentId == id);
             }
 
-            // Запасной вариант: по индексу строки
             if (row.Index >= 0 && row.Index < _equipmentList.Count)
                 return _equipmentList[row.Index];
 
             return null;
         }
 
-        private void LoadEquipmentData()
+        private void btnAddEquipment_Click(object sender, EventArgs e)
         {
-            try
+            using (var form = new EquipmentEditForm())
             {
-                var data = _repository.GetAll();
-                dataGridView1.DataSource = data;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка загрузки данных: {ex.Message}", "Ошибка", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (form.ShowDialog(this) == DialogResult.OK)
+                    LoadEquipmentData();
             }
         }
 
-
         private void btnEditEquipment_Click(object sender, EventArgs e)
         {
-            Equipment selected = GetSelectedEquipment();
+            Equipment? selected = GetSelectedEquipment();
 
             if (selected == null)
             {
@@ -80,14 +90,6 @@ namespace NetFormsApp1
                 if (form.ShowDialog(this) == DialogResult.OK)
                     LoadEquipmentData();
             }
-        }
-        
-
-        private void btnAddEquipment_Click(object sender, EventArgs e)
-        {
-            using var form = new EquipmentEditForm();
-            if (form.ShowDialog(this) == DialogResult.OK)
-            LoadEquipmentData();
         }
     }
 }

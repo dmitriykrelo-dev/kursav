@@ -34,14 +34,15 @@ namespace NetFormsApp1
 
             if (_editing != null)
             {
-                txtInventoryNumber.Text = _editing.InventoryNumber;
-                txtSerialNumber.Text = _editing.SerialNumber;
-                txtName.Text = _editing.Name;
+                txtInventoryNumber.Text = _editing.InventoryNumber ?? string.Empty;
+                txtSerialNumber.Text = _editing.SerialNumber ?? string.Empty;
+                txtName.Text = _editing.Name ?? string.Empty;
                 txtPrice.Text = _editing.Price.ToString(CultureInfo.InvariantCulture);
-                txtNotes.Text = _editing.Notes;
+                txtNotes.Text = _editing.Notes ?? string.Empty;
+            
                 if (DateTime.TryParse(_editing.PurchaseDate, out var date))
                     dtpPurchaseDate.Value = date;
-
+            
                 SelectById(cmbCategory, _editing.CategoryId);
                 SelectById(cmbLocation, _editing.LocationId);
                 SelectById(cmbStatus, _editing.StatusId);
