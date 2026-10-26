@@ -5,6 +5,6 @@ namespace NetFormsApp1.Models
         public int UserId { get; set; }
         public string? Login { get; set; }
         public string? FullName { get; set; }
-        public string? Role { get; set; }   // "admin" или "operator"
+        public string? Role { get; set; }   
     }
 }

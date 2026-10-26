@@ -47,7 +47,6 @@ namespace NetFormsApp1.Data
             return list;
         }
 
-        // ===== Справочники для выпадающих списков =====
         public List<ReferenceItem> GetCategories() => GetReferenceList("categories", "category_id");
         public List<ReferenceItem> GetLocations()  => GetReferenceList("locations", "location_id");
         public List<ReferenceItem> GetStatuses()   => GetReferenceList("statuses", "status_id");
@@ -64,7 +63,6 @@ namespace NetFormsApp1.Data
             return list;
         }
 
-        // ===== Добавление =====
         public void Add(Equipment eq)
         {
             using var connection = new SqliteConnection(DatabaseHelper.ConnectionString);
@@ -75,7 +73,6 @@ namespace NetFormsApp1.Data
             FillParameters(connection, sql, eq).ExecuteNonQuery();
         }
 
-        // ===== Изменение =====
         public void Update(Equipment eq)
         {
             using var connection = new SqliteConnection(DatabaseHelper.ConnectionString);
@@ -89,7 +86,6 @@ namespace NetFormsApp1.Data
             cmd.ExecuteNonQuery();
         }
 
-        // Общий метод заполнения параметров (чтобы не дублировать код)
         private SqliteCommand FillParameters(SqliteConnection connection, string sql, Equipment eq)
         {
             var cmd = new SqliteCommand(sql, connection);

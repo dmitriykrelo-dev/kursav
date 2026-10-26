@@ -3,8 +3,6 @@ namespace NetFormsApp1.Models
     public class Equipment
     {
         public int EquipmentId { get; set; }
-        
-        // Знак "?" означает, что это поле МОЖЕТ быть пустым (null)
         public string? InventoryNumber { get; set; }
         public string? SerialNumber { get; set; }
         public string? Name { get; set; }
