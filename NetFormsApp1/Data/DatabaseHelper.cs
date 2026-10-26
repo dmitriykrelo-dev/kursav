@@ -15,17 +15,58 @@ namespace NetFormsApp1.Data
             connection.Open();
 
             Execute(connection, "PRAGMA foreign_keys = ON;");
-
-            // 1. Таблицы создаются ВСЕГДА (IF NOT EXISTS не тронет существующие)
             Execute(connection, SchemaScript);
 
-            // 2. Справочники и демо-данные заполняются только если таблицы пустые
             if (IsEmpty(connection, "statuses"))   Execute(connection, StatusesSeed);
             if (IsEmpty(connection, "categories")) Execute(connection, CategoriesSeed);
             if (IsEmpty(connection, "locations"))  Execute(connection, LocationsSeed);
-            if (IsEmpty(connection, "users"))      Execute(connection, UsersSeed);
             if (IsEmpty(connection, "employees"))  Execute(connection, EmployeesSeed);
             if (IsEmpty(connection, "equipment"))  Execute(connection, EquipmentSeed);
+
+            // Пользователи создаются с НАСТОЯЩИМИ SHA-256 хэшами паролей (п. 1.3 курсового)
+            if (IsEmpty(connection, "users"))
+            {
+                InsertUser(connection, "admin", "admin123", "Администратор системы", "admin");
+                InsertUser(connection, "operator", "operator123", "Оператор клуба", "operator");
+            }
+
+            // Если БД была создана старой версией программы — заменяем демо-хэши на настоящие
+            MigrateDemoPasswords(connection);
+        }
+
+        // ===== Хэширование пароля по SHA-256 =====
+        public static string HashPassword(string password)
+        {
+            using var sha = System.Security.Cryptography.SHA256.Create();
+            byte[] bytes = sha.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+            return Convert.ToHexString(bytes).ToLowerInvariant();
+        }
+
+        private static void InsertUser(SqliteConnection connection, string login, string password, string fullName, string role)
+        {
+            using var cmd = connection.CreateCommand();
+            cmd.CommandText = "INSERT INTO users (login, password_hash, full_name, role) VALUES (@login, @hash, @name, @role);";
+            cmd.Parameters.AddWithValue("@login", login);
+            cmd.Parameters.AddWithValue("@hash", HashPassword(password));
+            cmd.Parameters.AddWithValue("@name", fullName);
+            cmd.Parameters.AddWithValue("@role", role);
+            cmd.ExecuteNonQuery();
+        }
+
+        private static void MigrateDemoPasswords(SqliteConnection connection)
+        {
+            UpdateOldHash(connection, "admin", "hash_example_admin", "admin123");
+            UpdateOldHash(connection, "operator", "hash_example_operator", "operator123");
+        }
+
+        private static void UpdateOldHash(SqliteConnection connection, string login, string oldHash, string newPassword)
+        {
+            using var cmd = connection.CreateCommand();
+            cmd.CommandText = "UPDATE users SET password_hash = @new WHERE login = @login AND password_hash = @old;";
+            cmd.Parameters.AddWithValue("@new", HashPassword(newPassword));
+            cmd.Parameters.AddWithValue("@login", login);
+            cmd.Parameters.AddWithValue("@old", oldHash);
+            cmd.ExecuteNonQuery();
         }
 
         private static bool IsEmpty(SqliteConnection connection, string table)
@@ -69,15 +110,10 @@ namespace NetFormsApp1.Data
             ('VIP-зона', 'Зона повышенной комфортности'), ('Серверная', 'Помещение серверного оборудования'),
             ('Склад', 'Складское помещение');";
 
-        private const string UsersSeed = @"INSERT INTO users (login, password_hash, full_name, role) VALUES
-            ('admin', 'hash_example_admin', 'Администратор системы', 'admin'),
-            ('operator', 'hash_example_operator', 'Оператор клуба', 'operator');";
-
         private const string EmployeesSeed = @"INSERT INTO employees (full_name, position, phone) VALUES
             ('Иванов Иван Иванович', 'Системный администратор', '+7 900 111-22-33'),
             ('Петров Пётр Петрович', 'Техник', '+7 900 222-33-44');";
 
-        // ===== Демо-оборудование для тестов и скриншотов =====
         private const string EquipmentSeed = @"INSERT INTO equipment (inventory_number, serial_number, name, category_id, location_id, status_id, purchase_date, price, notes) VALUES
             ('INV-0001', 'SN-PC-1001', 'Игровой ПК Zeus', 1, 1, 1, '2024-05-12', 120000, 'i7-13700K, RTX 4070'),
             ('INV-0002', 'SN-PC-1002', 'Игровой ПК Zeus', 1, 1, 1, '2024-05-12', 120000, NULL),

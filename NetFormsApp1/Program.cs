@@ -1,17 +1,27 @@
+using System;
+using System.Windows.Forms;
+using NetFormsApp1.Data;
+
 namespace NetFormsApp1
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+            // Если у тебя в шаблоне были строки EnableVisualStyles / SetCompatibleTextRenderingDefault — оставь их вместо этой:
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainForm());
+
+            DatabaseHelper.InitializeDatabase();
+
+            using (var loginForm = new LoginForm())
+            {
+                // Не вошёл (закрыл окно или отменил) — программа просто завершается
+                if (loginForm.ShowDialog() != DialogResult.OK || loginForm.LoggedUser == null)
+                    return;
+
+                Application.Run(new MainForm(loginForm.LoggedUser));
+            }
         }
     }
 }

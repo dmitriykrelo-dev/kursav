@@ -11,8 +11,11 @@ namespace NetFormsApp1
         private EquipmentRepository _repository;
         private List<Equipment> _equipmentList = new List<Equipment>();
 
-        public MainForm()
+        private User? _currentUser;
+        public MainForm(User? currentUser = null)
         {
+            _currentUser = currentUser;
+
             InitializeComponent();
 
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -21,6 +24,12 @@ namespace NetFormsApp1
             DatabaseHelper.InitializeDatabase();
             _repository = new EquipmentRepository();
             LoadEquipmentData();
+
+            if (_currentUser != null)
+            {
+                string role = _currentUser.Role == "admin" ? "администратор" : "оператор";
+                this.Text = $"Оборудование клуба — {_currentUser.FullName} ({role})";
+            }
         }
 
         private void LoadEquipmentData()
