@@ -100,7 +100,7 @@ namespace NetFormsApp1
             this.tabControl1.Controls.Add(this.tabEmployees);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.SelectedIndex = 3;
             this.tabControl1.Size = new System.Drawing.Size(536, 406);
             this.tabControl1.TabIndex = 0;
             // 
@@ -122,6 +122,7 @@ namespace NetFormsApp1
             // dgvCategories
             // 
             this.dgvCategories.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.dgvCategories.GridColor = System.Drawing.Color.Silver;
             this.dgvCategories.Location = new System.Drawing.Point(10, 10);
             this.dgvCategories.Name = "dgvCategories";
             this.dgvCategories.Size = new System.Drawing.Size(500, 220);
@@ -197,6 +198,7 @@ namespace NetFormsApp1
             // dgvLocations
             // 
             this.dgvLocations.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.dgvLocations.GridColor = System.Drawing.Color.Silver;
             this.dgvLocations.Location = new System.Drawing.Point(10, 10);
             this.dgvLocations.Name = "dgvLocations";
             this.dgvLocations.Size = new System.Drawing.Size(500, 220);
@@ -236,19 +238,23 @@ namespace NetFormsApp1
             // 
             // btnAddLocation
             // 
+            this.btnAddLocation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnAddLocation.Location = new System.Drawing.Point(120, 305);
             this.btnAddLocation.Name = "btnAddLocation";
             this.btnAddLocation.Size = new System.Drawing.Size(180, 32);
             this.btnAddLocation.TabIndex = 1;
             this.btnAddLocation.Text = "Добавить";
+            this.btnAddLocation.UseVisualStyleBackColor = false;
             // 
             // btnDeleteLocation
             // 
+            this.btnDeleteLocation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnDeleteLocation.Location = new System.Drawing.Point(310, 305);
             this.btnDeleteLocation.Name = "btnDeleteLocation";
             this.btnDeleteLocation.Size = new System.Drawing.Size(180, 32);
             this.btnDeleteLocation.TabIndex = 0;
             this.btnDeleteLocation.Text = "Удалить";
+            this.btnDeleteLocation.UseVisualStyleBackColor = false;
             // 
             // tabStatuses
             // 
@@ -266,6 +272,7 @@ namespace NetFormsApp1
             // dgvStatuses
             // 
             this.dgvStatuses.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.dgvStatuses.GridColor = System.Drawing.Color.Silver;
             this.dgvStatuses.Location = new System.Drawing.Point(10, 10);
             this.dgvStatuses.Name = "dgvStatuses";
             this.dgvStatuses.Size = new System.Drawing.Size(500, 220);
@@ -289,19 +296,23 @@ namespace NetFormsApp1
             // 
             // btnAddStatus
             // 
+            this.btnAddStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnAddStatus.Location = new System.Drawing.Point(120, 275);
             this.btnAddStatus.Name = "btnAddStatus";
             this.btnAddStatus.Size = new System.Drawing.Size(180, 32);
             this.btnAddStatus.TabIndex = 1;
             this.btnAddStatus.Text = "Добавить";
+            this.btnAddStatus.UseVisualStyleBackColor = false;
             // 
             // btnDeleteStatus
             // 
+            this.btnDeleteStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnDeleteStatus.Location = new System.Drawing.Point(310, 275);
             this.btnDeleteStatus.Name = "btnDeleteStatus";
             this.btnDeleteStatus.Size = new System.Drawing.Size(180, 32);
             this.btnDeleteStatus.TabIndex = 0;
             this.btnDeleteStatus.Text = "Удалить";
+            this.btnDeleteStatus.UseVisualStyleBackColor = false;
             // 
             // tabEmployees
             // 
@@ -323,6 +334,7 @@ namespace NetFormsApp1
             // dgvEmployees
             // 
             this.dgvEmployees.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.dgvEmployees.GridColor = System.Drawing.Color.Silver;
             this.dgvEmployees.Location = new System.Drawing.Point(10, 10);
             this.dgvEmployees.Name = "dgvEmployees";
             this.dgvEmployees.Size = new System.Drawing.Size(500, 220);
@@ -378,19 +390,23 @@ namespace NetFormsApp1
             // 
             // btnAddEmployee
             // 
+            this.btnAddEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnAddEmployee.Location = new System.Drawing.Point(120, 305);
             this.btnAddEmployee.Name = "btnAddEmployee";
             this.btnAddEmployee.Size = new System.Drawing.Size(180, 32);
             this.btnAddEmployee.TabIndex = 1;
             this.btnAddEmployee.Text = "Добавить";
+            this.btnAddEmployee.UseVisualStyleBackColor = false;
             // 
             // btnDeleteEmployee
             // 
+            this.btnDeleteEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnDeleteEmployee.Location = new System.Drawing.Point(310, 305);
             this.btnDeleteEmployee.Name = "btnDeleteEmployee";
             this.btnDeleteEmployee.Size = new System.Drawing.Size(180, 32);
             this.btnDeleteEmployee.TabIndex = 0;
             this.btnDeleteEmployee.Text = "Удалить";
+            this.btnDeleteEmployee.UseVisualStyleBackColor = false;
             // 
             // ReferencesForm
             // 
