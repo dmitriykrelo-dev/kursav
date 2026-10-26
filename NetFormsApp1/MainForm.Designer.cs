@@ -19,6 +19,7 @@ namespace NetFormsApp1
         private System.Windows.Forms.Button btnAddEquipment;
         private System.Windows.Forms.Button btnEditEquipment;
         private System.Windows.Forms.Button btnMoveEquipment;
+        private System.Windows.Forms.Button btnMaintenance;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label lblSearch;
 
@@ -28,6 +29,7 @@ namespace NetFormsApp1
             this.btnAddEquipment = new System.Windows.Forms.Button();
             this.btnEditEquipment = new System.Windows.Forms.Button();
             this.btnMoveEquipment = new System.Windows.Forms.Button();
+            this.btnMaintenance = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -71,6 +73,14 @@ namespace NetFormsApp1
             this.btnMoveEquipment.Text = "Переместить";
             this.btnMoveEquipment.UseVisualStyleBackColor = true;
             // 
+            // btnMaintenance
+            // 
+            this.btnMaintenance.Location = new System.Drawing.Point(790, 15);
+            this.btnMaintenance.Name = "btnMaintenance";
+            this.btnMaintenance.Size = new System.Drawing.Size(140, 30);
+            this.btnMaintenance.Text = "Обслуживание";
+            this.btnMaintenance.UseVisualStyleBackColor = true;
+            // 
             // dataGridView1
             // 
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -91,6 +101,7 @@ namespace NetFormsApp1
             this.Controls.Add(this.btnEditEquipment);
             this.Controls.Add(this.btnAddEquipment);
             this.Controls.Add(this.btnMoveEquipment);
+            this.Controls.Add(this.btnMaintenance);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.dataGridView1);

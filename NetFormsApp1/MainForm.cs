@@ -26,11 +26,11 @@ namespace NetFormsApp1
             _repository = new EquipmentRepository();
             LoadEquipmentData();
 
-            // Подключаем обработчик поиска
             txtSearch.TextChanged += TxtSearch_TextChanged;
             btnAddEquipment.Click += btnAddEquipment_Click;
             btnEditEquipment.Click += btnEditEquipment_Click;
             btnMoveEquipment.Click += btnMoveEquipment_Click;
+            btnMaintenance.Click += btnMaintenance_Click;
 
             if (_currentUser != null)
             {
@@ -145,6 +145,22 @@ namespace NetFormsApp1
             }
         
             using (var form = new MovementForm(selected))
+            {
+                if (form.ShowDialog(this) == DialogResult.OK)
+                    LoadEquipmentData();
+            }
+        }
+        private void btnMaintenance_Click(object? sender, EventArgs e)
+        {
+            var selected = GetSelectedEquipment();
+            if (selected == null)
+            {
+                MessageBox.Show("Сначала выберите строку оборудования в таблице.", "Внимание",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+        
+            using (var form = new MaintenanceForm(selected))
             {
                 if (form.ShowDialog(this) == DialogResult.OK)
                     LoadEquipmentData();

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NetFormsApp1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a2561b02dc828edb43fc5b6e583368e8d119892")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8a0785ec88b07e816c5cf294ec97b196617f1351")]
 [assembly: System.Reflection.AssemblyProductAttribute("NetFormsApp1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NetFormsApp1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
