@@ -24,10 +24,14 @@ namespace NetFormsApp1.Data
             if (IsEmpty(connection, "equipment"))  Execute(connection, EquipmentSeed);
 
             // Пользователи создаются с НАСТОЯЩИМИ SHA-256 хэшами паролей (п. 1.3 курсового)
+            // Расширено до 5 ролей согласно требованиям
             if (IsEmpty(connection, "users"))
             {
-                InsertUser(connection, "admin", "admin123", "Администратор системы", "admin");
-                InsertUser(connection, "operator", "operator123", "Оператор клуба", "operator");
+                InsertUser(connection, "admin", "123", "Главный администратор", "admin");
+                InsertUser(connection, "operator", "123", "Оператор зала", "operator");
+                InsertUser(connection, "tech", "123", "Системный администратор", "technician");
+                InsertUser(connection, "buh", "123", "Бухгалтер клуба", "accountant");
+                InsertUser(connection, "guest", "123", "Гость / Наблюдатель", "viewer");
             }
 
             // Если БД была создана старой версией программы — заменяем демо-хэши на настоящие
@@ -83,9 +87,9 @@ namespace NetFormsApp1.Data
             cmd.ExecuteNonQuery();
         }
 
-        // ===== Скрипт из Приложения Б твоего курсового =====
+        // ===== Скрипт из Приложения Б (ОБНОВЛЁН ДО 5 РОЛЕЙ) =====
         private const string SchemaScript = @"
-            CREATE TABLE IF NOT EXISTS users (user_id INTEGER PRIMARY KEY AUTOINCREMENT, login TEXT NOT NULL UNIQUE, password_hash TEXT NOT NULL, full_name TEXT NOT NULL, role TEXT NOT NULL CHECK(role IN ('admin', 'operator')));
+            CREATE TABLE IF NOT EXISTS users (user_id INTEGER PRIMARY KEY AUTOINCREMENT, login TEXT NOT NULL UNIQUE, password_hash TEXT NOT NULL, full_name TEXT NOT NULL, role TEXT NOT NULL CHECK(role IN ('admin', 'operator', 'technician', 'accountant', 'viewer')));
             CREATE TABLE IF NOT EXISTS categories (category_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL UNIQUE, description TEXT);
             CREATE TABLE IF NOT EXISTS locations (location_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL UNIQUE, description TEXT);
             CREATE TABLE IF NOT EXISTS statuses (status_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL UNIQUE);

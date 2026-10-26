@@ -40,19 +40,32 @@ namespace NetFormsApp1
             btnDeleteEquipment.Click += btnDeleteEquipment_Click; 
             btnReports.Click += btnReports_Click;                 
 
-            bool isAdmin = _currentUser != null && _currentUser.Role == "admin";
+            // ===== НОВАЯ ЛОГИКА РАЗГРАНИЧЕНИЯ ПРАВ (5 РОЛЕЙ) =====
+            UserRole role = _currentUser?.Role ?? UserRole.Viewer;
             
-            btnAddEquipment.Visible = isAdmin;
-            btnEditEquipment.Visible = isAdmin;
-            btnDeleteEquipment.Visible = isAdmin; 
-            btnReferences.Visible = isAdmin;
-            btnReports.Visible = isAdmin;        
-            btnBackup.Visible = isAdmin;
+            // Матрица доступа согласно п. 1.3 и 2.1 курсового проекта
+            btnAddEquipment.Visible = role == UserRole.Admin || role == UserRole.Technician;
+            btnEditEquipment.Visible = role == UserRole.Admin || role == UserRole.Technician;
+            btnDeleteEquipment.Visible = role == UserRole.Admin; // Только админ
+            btnMoveEquipment.Visible = role == UserRole.Admin || role == UserRole.Operator || role == UserRole.Technician;
+            btnMaintenance.Visible = role == UserRole.Admin || role == UserRole.Technician;
+            btnReferences.Visible = role == UserRole.Admin; // Только админ
+            btnReports.Visible = role == UserRole.Admin || role == UserRole.Accountant; // Админ и Бухгалтер
+            btnBackup.Visible = role == UserRole.Admin; // Только админ
 
+            // Формируем красивый заголовок окна в зависимости от роли
             if (_currentUser != null)
             {
-                string role = _currentUser.Role == "admin" ? "администратор" : "оператор";
-                this.Text = $"Оборудование клуба — {_currentUser.FullName} ({role})";
+                string roleName = role switch
+                {
+                    UserRole.Admin => "Администратор",
+                    UserRole.Operator => "Оператор",
+                    UserRole.Technician => "Техник",
+                    UserRole.Accountant => "Бухгалтер",
+                    UserRole.Viewer => "Наблюдатель",
+                    _ => "Пользователь"
+                };
+                this.Text = $"Учёт оборудования — {_currentUser.FullName} ({roleName})";
             }
         }
 
@@ -208,8 +221,6 @@ namespace NetFormsApp1
             }
         }
 
-        // ===== НОВЫЕ МЕТОДЫ =====
-
         private void btnDeleteEquipment_Click(object? sender, EventArgs e)
         {
             var selected = GetSelectedEquipment();
@@ -232,7 +243,6 @@ namespace NetFormsApp1
                 }
                 catch (SqliteException ex) when (ex.SqliteErrorCode == 19) 
                 {
-                    // Эта ошибка возникает, если срабатывает FOREIGN KEY (есть связанные перемещения/ремонты)
                     MessageBox.Show("Невозможно удалить оборудование: по нему уже зарегистрированы перемещения или обслуживания.\nСначала удалите связанные записи или измените статус на 'Списано'.", 
                                     "Запрет удаления", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }

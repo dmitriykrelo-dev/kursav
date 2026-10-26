@@ -24,7 +24,7 @@ namespace NetFormsApp1.Data
                     UserId = reader.GetInt32(0),
                     Login = reader.GetString(1),
                     FullName = reader.GetString(2),
-                    Role = reader.GetString(3)
+                    Role = reader.GetString(3).ToRole() // <-- Используем наш метод расширения
                 };
             }
             return null;
