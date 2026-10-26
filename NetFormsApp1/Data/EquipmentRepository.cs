@@ -1,24 +1,21 @@
-using NetFormsApp1.Models;
-using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
-using NetFormsApp1.Data;
+using Microsoft.Data.Sqlite;
+using NetFormsApp1.Models;
 
-namespace ComputerClubEquipment.Data
+namespace NetFormsApp1.Data
 {
     public class EquipmentRepository
     {
         public List<Equipment> GetAll()
         {
-            var equipmentList = new List<Equipment>();
+            var list = new List<Equipment>();
             using var connection = new SqliteConnection(DatabaseHelper.ConnectionString);
             connection.Open();
 
-            // Тот самый JOIN запрос из твоего Приложения В, но возвращающий объекты
             string sql = @"
-                SELECT e.equipment_id, e.inventory_number, e.serial_number, e.name, 
-                       c.category_id, c.name as category_name,
-                       l.location_id, l.name as location_name,
-                       s.status_id, s.name as status_name,
+                SELECT e.equipment_id, e.inventory_number, e.serial_number, e.name,
+                       c.category_id, c.name, l.location_id, l.name, s.status_id, s.name,
                        e.purchase_date, e.price, e.notes
                 FROM equipment e
                 JOIN categories c ON c.category_id = e.category_id
@@ -28,10 +25,9 @@ namespace ComputerClubEquipment.Data
 
             using var command = new SqliteCommand(sql, connection);
             using var reader = command.ExecuteReader();
-
             while (reader.Read())
             {
-                equipmentList.Add(new Equipment
+                list.Add(new Equipment
                 {
                     EquipmentId = reader.GetInt32(0),
                     InventoryNumber = reader.GetString(1),
@@ -48,28 +44,65 @@ namespace ComputerClubEquipment.Data
                     Notes = reader.IsDBNull(12) ? "" : reader.GetString(12)
                 });
             }
-            return equipmentList;
+            return list;
         }
 
+        // ===== Справочники для выпадающих списков =====
+        public List<ReferenceItem> GetCategories() => GetReferenceList("categories", "category_id");
+        public List<ReferenceItem> GetLocations()  => GetReferenceList("locations", "location_id");
+        public List<ReferenceItem> GetStatuses()   => GetReferenceList("statuses", "status_id");
+
+        private List<ReferenceItem> GetReferenceList(string table, string idColumn)
+        {
+            var list = new List<ReferenceItem>();
+            using var connection = new SqliteConnection(DatabaseHelper.ConnectionString);
+            connection.Open();
+            using var command = new SqliteCommand($"SELECT {idColumn}, name FROM {table} ORDER BY name;", connection);
+            using var reader = command.ExecuteReader();
+            while (reader.Read())
+                list.Add(new ReferenceItem { Id = reader.GetInt32(0), Name = reader.GetString(1) });
+            return list;
+        }
+
+        // ===== Добавление =====
         public void Add(Equipment eq)
         {
             using var connection = new SqliteConnection(DatabaseHelper.ConnectionString);
             connection.Open();
-            string sql = @"INSERT INTO equipment (inventory_number, serial_number, name, category_id, location_id, status_id, purchase_date, price, notes) 
+            string sql = @"INSERT INTO equipment (inventory_number, serial_number, name, category_id,
+                           location_id, status_id, purchase_date, price, notes)
                            VALUES (@inv, @sn, @name, @cat, @loc, @stat, @date, @price, @notes)";
-            
-            using var command = new SqliteCommand(sql, connection);
-            command.Parameters.AddWithValue("@inv", eq.InventoryNumber);
-            command.Parameters.AddWithValue("@sn", string.IsNullOrEmpty(eq.SerialNumber) ? (object)DBNull.Value : eq.SerialNumber);
-            command.Parameters.AddWithValue("@name", eq.Name);
-            command.Parameters.AddWithValue("@cat", eq.CategoryId);
-            command.Parameters.AddWithValue("@loc", eq.LocationId);
-            command.Parameters.AddWithValue("@stat", eq.StatusId);
-            command.Parameters.AddWithValue("@date", string.IsNullOrEmpty(eq.PurchaseDate) ? (object)DBNull.Value : eq.PurchaseDate);
-            command.Parameters.AddWithValue("@price", eq.Price);
-            command.Parameters.AddWithValue("@notes", string.IsNullOrEmpty(eq.Notes) ? (object)DBNull.Value : eq.Notes);
-            
-            command.ExecuteNonQuery();
+            FillParameters(connection, sql, eq).ExecuteNonQuery();
+        }
+
+        // ===== Изменение =====
+        public void Update(Equipment eq)
+        {
+            using var connection = new SqliteConnection(DatabaseHelper.ConnectionString);
+            connection.Open();
+            string sql = @"UPDATE equipment SET inventory_number=@inv, serial_number=@sn, name=@name,
+                           category_id=@cat, location_id=@loc, status_id=@stat,
+                           purchase_date=@date, price=@price, notes=@notes
+                           WHERE equipment_id=@id";
+            var cmd = FillParameters(connection, sql, eq);
+            cmd.Parameters.AddWithValue("@id", eq.EquipmentId);
+            cmd.ExecuteNonQuery();
+        }
+
+        // Общий метод заполнения параметров (чтобы не дублировать код)
+        private SqliteCommand FillParameters(SqliteConnection connection, string sql, Equipment eq)
+        {
+            var cmd = new SqliteCommand(sql, connection);
+            cmd.Parameters.AddWithValue("@inv", eq.InventoryNumber);
+            cmd.Parameters.AddWithValue("@sn", string.IsNullOrEmpty(eq.SerialNumber) ? (object)DBNull.Value : eq.SerialNumber);
+            cmd.Parameters.AddWithValue("@name", eq.Name);
+            cmd.Parameters.AddWithValue("@cat", eq.CategoryId);
+            cmd.Parameters.AddWithValue("@loc", eq.LocationId);
+            cmd.Parameters.AddWithValue("@stat", eq.StatusId);
+            cmd.Parameters.AddWithValue("@date", string.IsNullOrEmpty(eq.PurchaseDate) ? (object)DBNull.Value : eq.PurchaseDate);
+            cmd.Parameters.AddWithValue("@price", eq.Price);
+            cmd.Parameters.AddWithValue("@notes", string.IsNullOrEmpty(eq.Notes) ? (object)DBNull.Value : eq.Notes);
+            return cmd;
         }
     }
 }

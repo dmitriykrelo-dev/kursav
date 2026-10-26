@@ -7,6 +7,8 @@ namespace NetFormsApp1
         /// </summary>
         private System.ComponentModel.IContainer components = null;
         private DataGridView dataGridView1;
+        private Button btnEditEquipment;
+        private Button btnAddEquipment;
 
         /// <summary>
         ///  Clean up any resources being used.
@@ -30,6 +32,8 @@ namespace NetFormsApp1
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
+            btnEditEquipment = new Button();
+            btnAddEquipment = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             //
@@ -40,11 +44,33 @@ namespace NetFormsApp1
             dataGridView1.Size = new Size(787, 348);
             dataGridView1.TabIndex = 0;
             //
+            // btnEditEquipment
+            //
+            btnEditEquipment.Location = new Point(80, 357);
+            btnEditEquipment.Name = "btnEditEquipment";
+            btnEditEquipment.Size = new Size(75, 23);
+            btnEditEquipment.TabIndex = 1;
+            btnEditEquipment.Text = "Изменить";
+            btnEditEquipment.UseVisualStyleBackColor = true;
+            btnEditEquipment.Click += btnEditEquipment_Click;
+            //
+            // btnAddEquipment
+            //
+            btnAddEquipment.Location = new Point(3, 357);
+            btnAddEquipment.Name = "btnAddEquipment";
+            btnAddEquipment.Size = new Size(75, 23);
+            btnAddEquipment.TabIndex = 2;
+            btnAddEquipment.Text = "Добавить";
+            btnAddEquipment.UseVisualStyleBackColor = true;
+            btnAddEquipment.Click += btnAddEquipment_Click;
+            //
             // MainForm
             //
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnAddEquipment);
+            Controls.Add(btnEditEquipment);
             Controls.Add(dataGridView1);
             Name = "MainForm";
             Text = "MainForm";
