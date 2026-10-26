@@ -6,6 +6,7 @@ namespace NetFormsApp1
         ///  Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private DataGridView dataGridView1;
 
         /// <summary>
         ///  Clean up any resources being used.
@@ -28,14 +29,27 @@ namespace NetFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
+            dataGridView1 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            SuspendLayout();
+            //
+            // dataGridView1
+            //
+            dataGridView1.Location = new Point(3, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(787, 348);
+            dataGridView1.TabIndex = 0;
             //
             // MainForm
             //
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dataGridView1);
             Name = "MainForm";
             Text = "MainForm";
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
