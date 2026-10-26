@@ -50,13 +50,16 @@ namespace NetFormsApp1.Data
         public List<ReferenceItem> GetCategories() => GetReferenceList("categories", "category_id");
         public List<ReferenceItem> GetLocations()  => GetReferenceList("locations", "location_id");
         public List<ReferenceItem> GetStatuses()   => GetReferenceList("statuses", "status_id");
+        // У таблицы employees колонка с именем называется full_name (Приложение А)!
+        public List<ReferenceItem> GetEmployees()  => GetReferenceList("employees", "employee_id", "full_name");
 
-        private List<ReferenceItem> GetReferenceList(string table, string idColumn)
+        private List<ReferenceItem> GetReferenceList(string table, string idColumn, string nameColumn = "name")
         {
             var list = new List<ReferenceItem>();
             using var connection = new SqliteConnection(DatabaseHelper.ConnectionString);
             connection.Open();
-            using var command = new SqliteCommand($"SELECT {idColumn}, name FROM {table} ORDER BY name;", connection);
+            using var command = new SqliteCommand(
+                $"SELECT {idColumn}, {nameColumn} FROM {table} ORDER BY {nameColumn};", connection);
             using var reader = command.ExecuteReader();
             while (reader.Read())
                 list.Add(new ReferenceItem { Id = reader.GetInt32(0), Name = reader.GetString(1) });
@@ -85,7 +88,6 @@ namespace NetFormsApp1.Data
             cmd.Parameters.AddWithValue("@id", eq.EquipmentId);
             cmd.ExecuteNonQuery();
         }
-
         private SqliteCommand FillParameters(SqliteConnection connection, string sql, Equipment eq)
         {
             var cmd = new SqliteCommand(sql, connection);

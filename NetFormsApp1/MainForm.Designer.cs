@@ -2,18 +2,8 @@ namespace NetFormsApp1
 {
     partial class MainForm
     {
-        /// <summary>
-        ///  Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private DataGridView dataGridView1;
-        private Button btnEditEquipment;
-        private Button btnAddEquipment;
 
-        /// <summary>
-        ///  Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -23,59 +13,93 @@ namespace NetFormsApp1
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Код, сгенерированный дизайнером форм Windows
 
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
-        /// </summary>
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnAddEquipment;
+        private System.Windows.Forms.Button btnEditEquipment;
+        private System.Windows.Forms.Button btnMoveEquipment;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Label lblSearch;
+
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
-            btnEditEquipment = new Button();
-            btnAddEquipment = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            SuspendLayout();
-            //
-            // dataGridView1
-            //
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(787, 348);
-            dataGridView1.TabIndex = 0;
-            //
-            // btnEditEquipment
-            //
-            btnEditEquipment.Location = new Point(80, 357);
-            btnEditEquipment.Name = "btnEditEquipment";
-            btnEditEquipment.Size = new Size(75, 23);
-            btnEditEquipment.TabIndex = 1;
-            btnEditEquipment.Text = "Изменить";
-            btnEditEquipment.UseVisualStyleBackColor = true;
-            btnEditEquipment.Click += btnEditEquipment_Click;
-            //
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnAddEquipment = new System.Windows.Forms.Button();
+            this.btnEditEquipment = new System.Windows.Forms.Button();
+            this.btnMoveEquipment = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.lblSearch = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Location = new System.Drawing.Point(20, 20);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(53, 16);
+            this.lblSearch.Text = "Поиск:";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(80, 17);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(300, 24);
+            // 
             // btnAddEquipment
-            //
-            btnAddEquipment.Location = new Point(3, 357);
-            btnAddEquipment.Name = "btnAddEquipment";
-            btnAddEquipment.Size = new Size(75, 23);
-            btnAddEquipment.TabIndex = 2;
-            btnAddEquipment.Text = "Добавить";
-            btnAddEquipment.UseVisualStyleBackColor = true;
-            btnAddEquipment.Click += btnAddEquipment_Click;
-            //
+            // 
+            this.btnAddEquipment.Location = new System.Drawing.Point(400, 15);
+            this.btnAddEquipment.Name = "btnAddEquipment";
+            this.btnAddEquipment.Size = new System.Drawing.Size(120, 30);
+            this.btnAddEquipment.Text = "Добавить";
+            this.btnAddEquipment.UseVisualStyleBackColor = true;
+            // 
+            // btnEditEquipment
+            // 
+            this.btnEditEquipment.Location = new System.Drawing.Point(530, 15);
+            this.btnEditEquipment.Name = "btnEditEquipment";
+            this.btnEditEquipment.Size = new System.Drawing.Size(120, 30);
+            this.btnEditEquipment.Text = "Изменить";
+            this.btnEditEquipment.UseVisualStyleBackColor = true;
+            // 
+            // btnMoveEquipment
+            // 
+            this.btnMoveEquipment.Location = new System.Drawing.Point(660, 15);
+            this.btnMoveEquipment.Name = "btnMoveEquipment";
+            this.btnMoveEquipment.Size = new System.Drawing.Size(120, 30);
+            this.btnMoveEquipment.Text = "Переместить";
+            this.btnMoveEquipment.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(20, 60);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(940, 460);
+            this.dataGridView1.TabIndex = 0;
+            // 
             // MainForm
-            //
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(btnAddEquipment);
-            Controls.Add(btnEditEquipment);
-            Controls.Add(dataGridView1);
-            Name = "MainForm";
-            Text = "MainForm";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ResumeLayout(false);
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(980, 540);
+            this.Controls.Add(this.btnEditEquipment);
+            this.Controls.Add(this.btnAddEquipment);
+            this.Controls.Add(this.btnMoveEquipment);
+            this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.lblSearch);
+            this.Controls.Add(this.dataGridView1);
+            this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Учёт оборудования";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
         }
 
         #endregion

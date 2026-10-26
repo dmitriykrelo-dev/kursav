@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using NetFormsApp1.Data;
 using NetFormsApp1.Models;
@@ -10,8 +11,8 @@ namespace NetFormsApp1
     {
         private EquipmentRepository _repository;
         private List<Equipment> _equipmentList = new List<Equipment>();
-
         private User? _currentUser;
+
         public MainForm(User? currentUser = null)
         {
             _currentUser = currentUser;
@@ -25,6 +26,12 @@ namespace NetFormsApp1
             _repository = new EquipmentRepository();
             LoadEquipmentData();
 
+            // Подключаем обработчик поиска
+            txtSearch.TextChanged += TxtSearch_TextChanged;
+            btnAddEquipment.Click += btnAddEquipment_Click;
+            btnEditEquipment.Click += btnEditEquipment_Click;
+            btnMoveEquipment.Click += btnMoveEquipment_Click;
+
             if (_currentUser != null)
             {
                 string role = _currentUser.Role == "admin" ? "администратор" : "оператор";
@@ -37,7 +44,7 @@ namespace NetFormsApp1
             try
             {
                 _equipmentList = _repository.GetAll();
-                dataGridView1.DataSource = _equipmentList;
+                ApplyFilter();
             }
             catch (Exception ex)
             {
@@ -46,9 +53,37 @@ namespace NetFormsApp1
             }
         }
 
+        // Фильтрация по тексту из поля поиска
+        private void ApplyFilter()
+        {
+            string searchTerm = txtSearch.Text.Trim().ToLowerInvariant();
+
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+                dataGridView1.DataSource = _equipmentList;
+                return;
+            }
+
+            var filtered = _equipmentList.Where(eq =>
+                (eq.InventoryNumber?.ToLowerInvariant().Contains(searchTerm) ?? false) ||
+                (eq.Name?.ToLowerInvariant().Contains(searchTerm) ?? false) ||
+                (eq.CategoryName?.ToLowerInvariant().Contains(searchTerm) ?? false) ||
+                (eq.LocationName?.ToLowerInvariant().Contains(searchTerm) ?? false) ||
+                (eq.StatusName?.ToLowerInvariant().Contains(searchTerm) ?? false) ||
+                (eq.SerialNumber?.ToLowerInvariant().Contains(searchTerm) ?? false)
+            ).ToList();
+
+            dataGridView1.DataSource = filtered;
+        }
+
+        private void TxtSearch_TextChanged(object? sender, EventArgs e)
+        {
+            ApplyFilter();
+        }
+
         private Equipment? GetSelectedEquipment()
         {
-             DataGridViewRow? row = null;
+            DataGridViewRow? row = null;
 
             if (dataGridView1.SelectedRows.Count > 0)
                 row = dataGridView1.SelectedRows[0];
@@ -59,7 +94,6 @@ namespace NetFormsApp1
 
             if (row == null) return null;
 
-            // Ищем по ID из ячейки — надёжно даже если таблицу отсортировали кликом по заголовку
             if (dataGridView1.Columns.Contains("EquipmentId") &&
                 row.Cells["EquipmentId"].Value != null &&
                 row.Cells["EquipmentId"].Value != DBNull.Value)
@@ -74,7 +108,7 @@ namespace NetFormsApp1
             return null;
         }
 
-        private void btnAddEquipment_Click(object sender, EventArgs e)
+        private void btnAddEquipment_Click(object? sender, EventArgs e)
         {
             using (var form = new EquipmentEditForm())
             {
@@ -83,9 +117,9 @@ namespace NetFormsApp1
             }
         }
 
-        private void btnEditEquipment_Click(object sender, EventArgs e)
+        private void btnEditEquipment_Click(object? sender, EventArgs e)
         {
-            Equipment? selected = GetSelectedEquipment();
+            var selected = GetSelectedEquipment();
 
             if (selected == null)
             {
@@ -95,6 +129,22 @@ namespace NetFormsApp1
             }
 
             using (var form = new EquipmentEditForm(selected))
+            {
+                if (form.ShowDialog(this) == DialogResult.OK)
+                    LoadEquipmentData();
+            }
+        }
+        private void btnMoveEquipment_Click(object? sender, EventArgs e)
+        {
+            var selected = GetSelectedEquipment();
+            if (selected == null)
+            {
+                MessageBox.Show("Сначала выберите строку оборудования в таблице.", "Внимание", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+        
+            using (var form = new MovementForm(selected))
             {
                 if (form.ShowDialog(this) == DialogResult.OK)
                     LoadEquipmentData();
