@@ -56,6 +56,7 @@ namespace NetFormsApp1
             //
             txtInventoryNumber.Location = new Point(142, 18);
             txtInventoryNumber.Name = "txtInventoryNumber";
+            txtInventoryNumber.PlaceholderText = "Инвентарный номер";
             txtInventoryNumber.Size = new Size(121, 23);
             txtInventoryNumber.TabIndex = 0;
             //
@@ -63,6 +64,7 @@ namespace NetFormsApp1
             //
             txtSerialNumber.Location = new Point(142, 47);
             txtSerialNumber.Name = "txtSerialNumber";
+            txtSerialNumber.PlaceholderText = "Серийный номер";
             txtSerialNumber.Size = new Size(121, 23);
             txtSerialNumber.TabIndex = 1;
             //
@@ -70,15 +72,18 @@ namespace NetFormsApp1
             //
             txtName.Location = new Point(142, 76);
             txtName.Name = "txtName";
+            txtName.PlaceholderText = "Наименование";
             txtName.Size = new Size(121, 23);
             txtName.TabIndex = 2;
             //
             // cmbCategory
             //
+            cmbCategory.AccessibleName = "";
             cmbCategory.Location = new Point(142, 105);
             cmbCategory.Name = "cmbCategory";
             cmbCategory.Size = new Size(121, 23);
             cmbCategory.TabIndex = 3;
+            cmbCategory.Text = "Категория";
             //
             // cmbLocation
             //
@@ -86,6 +91,7 @@ namespace NetFormsApp1
             cmbLocation.Name = "cmbLocation";
             cmbLocation.Size = new Size(121, 23);
             cmbLocation.TabIndex = 4;
+            cmbLocation.Text = "Место размещения";
             //
             // cmbStatus
             //
@@ -93,6 +99,7 @@ namespace NetFormsApp1
             cmbStatus.Name = "cmbStatus";
             cmbStatus.Size = new Size(121, 23);
             cmbStatus.TabIndex = 5;
+            cmbStatus.Text = "Статус";
             //
             // dtpPurchaseDate
             //
@@ -105,6 +112,7 @@ namespace NetFormsApp1
             //
             txtPrice.Location = new Point(142, 221);
             txtPrice.Name = "txtPrice";
+            txtPrice.PlaceholderText = "Стоимость";
             txtPrice.Size = new Size(121, 23);
             txtPrice.TabIndex = 7;
             //
@@ -112,6 +120,7 @@ namespace NetFormsApp1
             //
             txtNotes.Location = new Point(142, 250);
             txtNotes.Name = "txtNotes";
+            txtNotes.PlaceholderText = "Примечание";
             txtNotes.Size = new Size(121, 23);
             txtNotes.TabIndex = 8;
             //
