@@ -130,7 +130,7 @@ namespace NetFormsApp1
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 23);
             btnSave.TabIndex = 9;
-            btnSave.Text = "button1";
+            btnSave.Text = "Сохранить";
             btnSave.UseVisualStyleBackColor = true;
             //
             // btnCancel
@@ -139,7 +139,7 @@ namespace NetFormsApp1
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 23);
             btnCancel.TabIndex = 10;
-            btnCancel.Text = "button2";
+            btnCancel.Text = "Отмена";
             btnCancel.UseVisualStyleBackColor = true;
             //
             // EquipmentEditForm

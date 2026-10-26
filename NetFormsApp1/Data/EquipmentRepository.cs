@@ -106,7 +106,6 @@ namespace NetFormsApp1.Data
         {
             using var connection = new SqliteConnection(DatabaseHelper.ConnectionString);
             connection.Open();
-            // Включаем проверку внешних ключей для этой операции
             using var pragma = new SqliteCommand("PRAGMA foreign_keys = ON;", connection);
             pragma.ExecuteNonQuery();
 

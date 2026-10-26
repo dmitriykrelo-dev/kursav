@@ -18,6 +18,8 @@ namespace NetFormsApp1
         private System.Windows.Forms.Button btnMoveEquipment;
         private System.Windows.Forms.Button btnMaintenance;
         private System.Windows.Forms.Button btnReferences;
+        private System.Windows.Forms.Button btnDeleteEquipment;
+        private System.Windows.Forms.Button btnReports;
         private System.Windows.Forms.Button btnBackup;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label lblSearch;
@@ -30,6 +32,8 @@ namespace NetFormsApp1
             this.btnMoveEquipment = new System.Windows.Forms.Button();
             this.btnMaintenance = new System.Windows.Forms.Button();
             this.btnReferences = new System.Windows.Forms.Button();
+            this.btnDeleteEquipment = new System.Windows.Forms.Button();
+            this.btnReports = new System.Windows.Forms.Button();
             this.btnBackup = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
@@ -84,6 +88,22 @@ namespace NetFormsApp1
             this.btnReferences.Size = new System.Drawing.Size(130, 30);
             this.btnReferences.Text = "Справочники";
             // 
+            // btnDeleteEquipment
+            // 
+            this.btnDeleteEquipment.Location = new System.Drawing.Point(350, 50);
+            this.btnDeleteEquipment.Name = "btnDeleteEquipment";
+            this.btnDeleteEquipment.Size = new System.Drawing.Size(110, 30);
+            this.btnDeleteEquipment.Text = "Удалить";
+            this.btnDeleteEquipment.UseVisualStyleBackColor = true;
+            // 
+            // btnReports
+            // 
+            this.btnReports.Location = new System.Drawing.Point(470, 50);
+            this.btnReports.Name = "btnReports";
+            this.btnReports.Size = new System.Drawing.Size(110, 30);
+            this.btnReports.Text = "Отчёты";
+            this.btnReports.UseVisualStyleBackColor = true;
+            // 
             // btnBackup
             // 
             this.btnBackup.Location = new System.Drawing.Point(1000, 15);
@@ -97,10 +117,10 @@ namespace NetFormsApp1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(20, 60);
+            this.dataGridView1.Location = new System.Drawing.Point(20, 95);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1130, 460);
+            this.dataGridView1.Size = new System.Drawing.Size(1130, 425);
             // 
             // MainForm
             // 
@@ -113,6 +133,8 @@ namespace NetFormsApp1
             this.Controls.Add(this.btnMoveEquipment);
             this.Controls.Add(this.btnEditEquipment);
             this.Controls.Add(this.btnAddEquipment);
+            this.Controls.Add(this.btnDeleteEquipment);
+            this.Controls.Add(this.btnReports);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.dataGridView1);

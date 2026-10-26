@@ -2,8 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Data;
+using System.IO; 
 using NetFormsApp1.Data;
 using NetFormsApp1.Models;
+using Microsoft.Data.Sqlite;
 
 namespace NetFormsApp1
 {
@@ -26,6 +29,7 @@ namespace NetFormsApp1
             _repository = new EquipmentRepository();
             LoadEquipmentData();
 
+            // Подписки на все события кнопок
             txtSearch.TextChanged += TxtSearch_TextChanged;
             btnAddEquipment.Click += btnAddEquipment_Click;
             btnEditEquipment.Click += btnEditEquipment_Click;
@@ -33,10 +37,16 @@ namespace NetFormsApp1
             btnMaintenance.Click += btnMaintenance_Click;
             btnReferences.Click += btnReferences_Click;
             btnBackup.Click += btnBackup_Click;
+            btnDeleteEquipment.Click += btnDeleteEquipment_Click; 
+            btnReports.Click += btnReports_Click;                 
+
             bool isAdmin = _currentUser != null && _currentUser.Role == "admin";
+            
             btnAddEquipment.Visible = isAdmin;
             btnEditEquipment.Visible = isAdmin;
+            btnDeleteEquipment.Visible = isAdmin; 
             btnReferences.Visible = isAdmin;
+            btnReports.Visible = isAdmin;        
             btnBackup.Visible = isAdmin;
 
             if (_currentUser != null)
@@ -60,7 +70,6 @@ namespace NetFormsApp1
             }
         }
 
-        // Фильтрация по тексту из поля поиска
         private void ApplyFilter()
         {
             string searchTerm = txtSearch.Text.Trim().ToLowerInvariant();
@@ -127,20 +136,19 @@ namespace NetFormsApp1
         private void btnEditEquipment_Click(object? sender, EventArgs e)
         {
             var selected = GetSelectedEquipment();
-
             if (selected == null)
             {
                 MessageBox.Show("Сначала выберите строку оборудования в таблице.",
                     "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-
             using (var form = new EquipmentEditForm(selected))
             {
                 if (form.ShowDialog(this) == DialogResult.OK)
                     LoadEquipmentData();
             }
         }
+
         private void btnMoveEquipment_Click(object? sender, EventArgs e)
         {
             var selected = GetSelectedEquipment();
@@ -150,13 +158,13 @@ namespace NetFormsApp1
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-        
             using (var form = new MovementForm(selected))
             {
                 if (form.ShowDialog(this) == DialogResult.OK)
                     LoadEquipmentData();
             }
         }
+
         private void btnMaintenance_Click(object? sender, EventArgs e)
         {
             var selected = GetSelectedEquipment();
@@ -166,13 +174,13 @@ namespace NetFormsApp1
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-
             using (var form = new MaintenanceForm(selected))
             {
                 if (form.ShowDialog(this) == DialogResult.OK)
                     LoadEquipmentData();
             }
         }
+
         private void btnReferences_Click(object? sender, EventArgs e)
         {
             using (var form = new ReferencesForm())
@@ -197,6 +205,50 @@ namespace NetFormsApp1
             {
                 MessageBox.Show($"Не удалось создать резервную копию: {ex.Message}", "Ошибка",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // ===== НОВЫЕ МЕТОДЫ =====
+
+        private void btnDeleteEquipment_Click(object? sender, EventArgs e)
+        {
+            var selected = GetSelectedEquipment();
+            if (selected == null)
+            {
+                MessageBox.Show("Сначала выберите строку оборудования в таблице.", "Внимание",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var result = MessageBox.Show($"Вы уверены, что хотите удалить '{selected.Name}' (Инв. {selected.InventoryNumber})?",
+                "Подтверждение удаления", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    _repository.Delete(selected.EquipmentId);
+                    LoadEquipmentData();
+                }
+                catch (SqliteException ex) when (ex.SqliteErrorCode == 19) 
+                {
+                    // Эта ошибка возникает, если срабатывает FOREIGN KEY (есть связанные перемещения/ремонты)
+                    MessageBox.Show("Невозможно удалить оборудование: по нему уже зарегистрированы перемещения или обслуживания.\nСначала удалите связанные записи или измените статус на 'Списано'.", 
+                                    "Запрет удаления", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при удалении: {ex.Message}", "Ошибка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnReports_Click(object? sender, EventArgs e)
+        {
+            using (var form = new ReportForm())
+            {
+                form.ShowDialog(this);
             }
         }
     }
